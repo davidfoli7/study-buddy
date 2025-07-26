@@ -36,11 +36,12 @@ This project explores how AI can be integrated into the education sector to crea
 - **OpenAI API** for advanced language processing
 - **Celery** for background task processing
 
-### Frontend
-- **React 18** with TypeScript for type safety
-- **Next.js** for server-side rendering and routing
-- **Tailwind CSS** for modern, responsive design
-- **Chart.js** for data visualization
+### Mobile Frontend
+- **React Native** with TypeScript for cross-platform mobile development
+- **Expo** for rapid development and deployment
+- **React Navigation** for mobile navigation
+- **NativeBase** or **React Native Elements** for UI components
+- **React Native Chart Kit** for data visualization
 - **Socket.io** for real-time updates
 
 ### AI & Machine Learning
@@ -63,13 +64,18 @@ study-buddy/
 │   │   └── utils/         # Utility functions
 │   ├── tests/             # Backend tests
 │   └── requirements.txt   # Python dependencies
-├── frontend/              # React/Next.js frontend
-│   ├── components/        # Reusable UI components
-│   ├── pages/            # Next.js pages
-│   ├── hooks/            # Custom React hooks
-│   ├── services/         # API service layer
-│   ├── types/            # TypeScript definitions
-│   └── utils/            # Utility functions
+├── mobile/                # React Native mobile app
+│   ├── src/
+│   │   ├── components/    # Reusable UI components
+│   │   ├── screens/       # Mobile screens
+│   │   ├── navigation/    # Navigation configuration
+│   │   ├── hooks/         # Custom React hooks
+│   │   ├── services/      # API service layer
+│   │   ├── types/         # TypeScript definitions
+│   │   ├── utils/         # Utility functions
+│   │   └── store/         # State management (Redux/Zustand)
+│   ├── assets/            # Images, fonts, etc.
+│   └── package.json       # React Native dependencies
 ├── data/                  # Sample data and datasets
 ├── docs/                  # Documentation
 └── docker-compose.yml     # Development environment setup
@@ -82,6 +88,9 @@ study-buddy/
 - Node.js 16+
 - PostgreSQL 12+
 - Redis 6+
+- React Native CLI or Expo CLI
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
 
 ### Development Setup
 
@@ -99,16 +108,18 @@ study-buddy/
    pip install -r requirements.txt
    ```
 
-3. **Frontend Setup**
+3. **Mobile App Setup**
    ```bash
-   cd frontend
+   cd mobile
    npm install
+   # For iOS (macOS only)
+   cd ios && pod install && cd ..
    ```
 
 4. **Environment Configuration**
    ```bash
    cp backend/.env.example backend/.env
-   cp frontend/.env.example frontend/.env
+   cp mobile/.env.example mobile/.env
    # Edit the .env files with your configuration
    ```
 
@@ -125,13 +136,29 @@ study-buddy/
    cd backend
    uvicorn app.main:app --reload --port 8000
 
-   # Terminal 2: Frontend
-   cd frontend
-   npm run dev
+   # Terminal 2: Mobile App
+   cd mobile
+   # For Expo
+   npx expo start
+   # For React Native CLI
+   npx react-native start
    ```
 
-7. **Access the Application**
-   - Frontend: http://localhost:3000
+7. **Run Mobile App**
+   ```bash
+   # Android
+   npx react-native run-android
+   # or for Expo
+   npx expo run:android
+
+   # iOS (macOS only)
+   npx react-native run-ios
+   # or for Expo
+   npx expo run:ios
+   ```
+
+8. **Access the Application**
+   - Mobile App: On your device/emulator
    - Backend API: http://localhost:8000
    - API Documentation: http://localhost:8000/docs
 
@@ -170,7 +197,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [ ] Phase 1: Core learning engine and basic UI
 - [ ] Phase 2: Advanced AI features and personalization
-- [ ] Phase 3: Mobile application
+- [ ] Phase 3: Advanced mobile features (offline sync, push notifications)
 - [ ] Phase 4: Integration with educational platforms
 - [ ] Phase 5: Advanced analytics and reporting
 
