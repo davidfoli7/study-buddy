@@ -85,7 +85,7 @@ async def get_user_stats(
     db: Session = Depends(get_db)
 ):
     """Get user's learning statistics"""
-    from ..models.achievement import Achievement
+    from ..models.progress import Achievement
     from ..models.learning_session import LearningSession
     
     achievements_count = db.query(Achievement).filter(
