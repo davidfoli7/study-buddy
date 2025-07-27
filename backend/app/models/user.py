@@ -37,14 +37,7 @@ class User(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
-    # Relationships
-    learning_sessions = relationship("LearningSession", back_populates="user")
-    assessments = relationship("Assessment", back_populates="user")
-    content_interactions = relationship("ContentInteraction", back_populates="user")
-    learning_style_assessments = relationship("LearningStyleAssessment", back_populates="user")
-    recommendations = relationship("Recommendation", back_populates="user")
-    progress_records = relationship("Progress", back_populates="user")
-    achievements = relationship("Achievement", back_populates="user")
+    # Relationships will be defined in other models to avoid circular imports
 
     def __repr__(self):
         return f"<User(id={self.id}, username='{self.username}', email='{self.email}')>"
